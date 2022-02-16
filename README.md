@@ -1,5 +1,7 @@
 # cmake "hello, world"
 
+[![Build](https://github.com/svens/hello_cmake/workflows/Build/badge.svg)](https://github.com/svens/hello_cmake/actions?query=workflow:Build)
+
 CMake itself is not build tool but build system generation tool: it reads
 project building description and generates required files for specified
 buildsystem (GNU Makefiles, Ninja, Visual Studio solution file, etc).
