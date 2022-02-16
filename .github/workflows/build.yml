@@ -17,7 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Configure buildsystem
+      - name: Prepare
         run: |
           case "${{ matrix.host }}" in
             ubuntu)
@@ -25,12 +25,13 @@ jobs:
               export CC=gcc-10 CXX=g++-10
               ;;
             windows)
+              choco install ninja
               ;;
           esac
+          cmake v3 -G Ninja
 
       - name: Build
         run: |
-          cmake v3 -G Ninja
           cmake --build .
 
       - name: Run
