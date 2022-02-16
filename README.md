@@ -38,7 +38,7 @@ overly complex way to demonstrate splitting code into modules:
 
 There are 3 versions of exactly same application, simply CMake project
 description is organised differently. Whichever to choose, is personal
-preference.
+preference. In walk-through guides, we use v1.
 
 
 ### v1
@@ -94,7 +94,11 @@ and it's implementation source file).
 ### v3
 
 Same approach as v2, except submodules are used with `include()` instead of
-`add_subdirectory()`
+`add_subdirectory()`. From project hierarchy perspective, this is little
+different from v2 but in build directory all targets will be in root
+directory (within build type directory). Depending on situation, this may be
+more convenient (for example, if wrapper script needs to copy files somewhere,
+etc)
 
     ~/src/hello_cmake/v3 $ tree
     .
