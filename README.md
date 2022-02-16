@@ -44,7 +44,28 @@ preference.
 ### v1
 
 Usual C/C++ code organisation with separate `include` and `src` directories
-![v1](v1.png)
+
+    ~/src/hello_cmake/v1 $ tree
+    .
+    ├── CMakeLists.txt
+    ├── alib
+    │   ├── CMakeLists.txt
+    │   ├── include
+    │   │   └── alib
+    │   │       └── print.hpp
+    │   └── src
+    │       └── print.cpp
+    ├── blib
+    │   ├── CMakeLists.txt
+    │   ├── include
+    │   │   └── blib
+    │   │       └── hello.hpp
+    │   └── src
+    │       └── hello.cpp
+    └── hello
+        ├── CMakeLists.txt
+        └── src
+            └── main.cpp
 
 
 ### v2
@@ -54,7 +75,20 @@ convenient for command line users, allowing shorter filename patterns to
 handle those pairs easier together (i.e. `print.?pp` specifies both header
 and it's implementation source file).
 
-![v2](v2.png)
+    ~/src/hello_cmake/v2 $ tree
+    .
+    ├── CMakeLists.txt
+    ├── alib
+    │   ├── CMakeLists.txt
+    │   ├── print.cpp
+    │   └── print.hpp
+    ├── blib
+    │   ├── CMakeLists.txt
+    │   ├── hello.cpp
+    │   └── hello.hpp
+    └── hello
+        ├── CMakeLists.txt
+        └── main.cpp
 
 
 ### v3
@@ -62,4 +96,17 @@ and it's implementation source file).
 Same approach as v2, except submodules are used with `include()` instead of
 `add_subdirectory()`
 
-![v3](v3.png)
+    ~/src/hello_cmake/v3 $ tree
+    .
+    ├── CMakeLists.txt
+    ├── alib
+    │   ├── list.cmake
+    │   ├── print.cpp
+    │   └── print.hpp
+    ├── blib
+    │   ├── hello.cpp
+    │   ├── hello.hpp
+    │   └── list.cmake
+    └── hello
+        ├── list.cmake
+        └── main.cpp
