@@ -15,6 +15,12 @@ While generating build system files, it is possible not to specify builder but
 let cmake choose on it's own depending on build host and/or installed toolchain.
 In [command line](cli.md) walkthrough we show both approaches.
 
+> *Note*
+> Because buildsystem files are generated, there is no point changing them,
+> cmake will overwrite modifications. To update list of sources, build flags
+> and so on, edit CMakeLists.txt instead and cmake automatically regenerates
+> buildsystem files.
+
 
 ## Sample project
 

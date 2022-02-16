@@ -18,7 +18,7 @@ let's assume our starting working directory is within project root directory
 ## cmake
 
 As we will be using cmake itself to invoke actual build system, we do not need
-to care which build system it chooses:
+to care which one it chooses:
 
     ~/src/build $ cmake ../hello_cmake/v1
     -- The C compiler identification is AppleClang 12.0.0.12000032
@@ -63,7 +63,7 @@ see cmake documentation):
     ~/src/build $ CC=gcc-11 CXX=g++-11 cmake ../hello_cmake/v1 -G Ninja -DCMAKE_BUILD_TYPE=Debug
     -- The C compiler identification is GNU 11.2.0
     [.. skip some output ..]
-    -- Build files have been written to: /Users/sven/src/build
+    -- Build files have been written to: /home/user/src/build
     ~/src/build $ _
 
 We can invoke ninja indirectly with cmake like above or start ninja directly
