@@ -1,8 +1,8 @@
 # Using cmake from Visual Studio
 
-As with [CLI](cli.md) approach, we keep here also project and build
-directories separate: source are on `h:\src\hello_cmake\v1` and build
-directory in `c:\build\hello_cmake`
+As with [CLI](cli.md) approach, we keep project and build directories
+separate: source are on `h:\src\hello_cmake\v1` and build directory in
+`c:\build\hello_cmake`
 
     C:\Build> mkdir hello_world && cd hello_world
     C:\Build> _
@@ -43,7 +43,7 @@ msbuild internally:
     C:\Build\hello_world> _
 
 Or simply open solution file and fully utilise GUI. Only exception is
-adding/removing files and updating build flags. This needs to happen from
+adding/removing files and updating build flags. This needs to happen within
 CMakeLists.txt itself.
 
     C:\Build\hello_world> start hello.sln

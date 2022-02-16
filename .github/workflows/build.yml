@@ -1,0 +1,39 @@
+name: Build
+
+on: [push, pull_request]
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    runs-on: ${{ matrix.host }}-latest
+
+    strategy:
+      matrix:
+        host: [ubuntu, windows]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Configure buildsystem
+        run: |
+          case "${{ matrix.host }}" in
+            ubuntu)
+              sudo apt-get install --yes g++-10 cmake ninja-build
+              export CC=gcc-10 CXX=g++-10
+              cmake . -G "Ninja Multi-Config" -DCMAKE_CONFIGURATION_TYPES="Debug;Release"
+              ;;
+            windows)
+              cmake . -G "Visual Studio 16 2019" -A x64
+              ;;
+          esac
+
+      - name: Debug build
+        run: |
+          cmake --build . --config Debug
+
+      - name: Release build
+        run: |
+          cmake --build . --config Release
