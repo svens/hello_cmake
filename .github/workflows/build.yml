@@ -23,10 +23,10 @@ jobs:
             ubuntu)
               sudo apt-get install --yes g++-10 cmake ninja-build
               export CC=gcc-10 CXX=g++-10
-              cmake . -G "Ninja Multi-Config" -DCMAKE_CONFIGURATION_TYPES="Debug;Release"
+              cmake v1 -G "Ninja Multi-Config" -DCMAKE_CONFIGURATION_TYPES="Debug;Release"
               ;;
             windows)
-              cmake . -G "Visual Studio 16 2019" -A x64
+              cmake v1 -G "Visual Studio 16 2019" -A x64
               ;;
           esac
 
