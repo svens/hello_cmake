@@ -51,19 +51,19 @@ Usual C/C++ code organisation with separate `include` and `src` directories
     .
     ├── CMakeLists.txt
     ├── alib
-    │   ├── CMakeLists.txt
-    │   ├── include
-    │   │   └── alib
-    │   │       └── print.hpp
-    │   └── src
-    │       └── print.cpp
+    │   ├── CMakeLists.txt
+    │   ├── include
+    │   │   └── alib
+    │   │       └── print.hpp
+    │   └── src
+    │       └── print.cpp
     ├── blib
-    │   ├── CMakeLists.txt
-    │   ├── include
-    │   │   └── blib
-    │   │       └── hello.hpp
-    │   └── src
-    │       └── hello.cpp
+    │   ├── CMakeLists.txt
+    │   ├── include
+    │   │   └── blib
+    │   │       └── hello.hpp
+    │   └── src
+    │       └── hello.cpp
     └── hello
         ├── CMakeLists.txt
         └── src
@@ -81,13 +81,13 @@ and it's implementation source file).
     .
     ├── CMakeLists.txt
     ├── alib
-    │   ├── CMakeLists.txt
-    │   ├── print.cpp
-    │   └── print.hpp
+    │   ├── CMakeLists.txt
+    │   ├── print.cpp
+    │   └── print.hpp
     ├── blib
-    │   ├── CMakeLists.txt
-    │   ├── hello.cpp
-    │   └── hello.hpp
+    │   ├── CMakeLists.txt
+    │   ├── hello.cpp
+    │   └── hello.hpp
     └── hello
         ├── CMakeLists.txt
         └── main.cpp
@@ -106,13 +106,36 @@ etc)
     .
     ├── CMakeLists.txt
     ├── alib
-    │   ├── list.cmake
-    │   ├── print.cpp
-    │   └── print.hpp
+    │   ├── list.cmake
+    │   ├── print.cpp
+    │   └── print.hpp
     ├── blib
-    │   ├── hello.cpp
-    │   ├── hello.hpp
-    │   └── list.cmake
+    │   ├── hello.cpp
+    │   ├── hello.hpp
+    │   └── list.cmake
     └── hello
         ├── list.cmake
+        └── main.cpp
+
+
+### v4
+
+Possible approach for repositories containing multiple major independent
+targets and their shared dependencies. Here, 'hello' is major target, 'alib' +
+'blib' are its dependencies. This approach does not litter root directory with
+unrelated stuff but same time building each major targets will build separate
+copy of its dependencies.
+
+    ~/src/hello_cmake/v4 $ tree
+    .
+    ├── alib
+    │   ├── CMakeLists.txt
+    │   ├── print.cpp
+    │   └── print.hpp
+    ├── blib
+    │   ├── CMakeLists.txt
+    │   ├── hello.cpp
+    │   └── hello.hpp
+    └── hello
+        ├── CMakeLists.txt
         └── main.cpp
