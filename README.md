@@ -38,7 +38,7 @@ overly complex way to demonstrate splitting code into modules:
 
 ## Versions
 
-There are 3 versions of exactly same application, simply CMake project
+There are multiple versions of exactly same application, just CMake project
 description is organised differently. Whichever to choose, is personal
 preference. In walk-through guides, we use v1.
 
