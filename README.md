@@ -2,50 +2,45 @@
 
 [![Build](https://github.com/svens/hello_cmake/workflows/Build/badge.svg)](https://github.com/svens/hello_cmake/actions?query=workflow:Build)
 
-CMake itself is not build tool but build system generation tool: it reads
+CMake is not a build tool but rather a build system generation tool because it reads
 project building description and generates required files for specified
 buildsystem (GNU Makefiles, Ninja, Visual Studio solution file, etc).
 Official tutorial can be found
 [here](https://cmake.org/cmake/help/latest/guide/tutorial/index.html).
 
-This project is not CMake tutorial but rather walk-through for using it from:
+This project is a walk-through of CMake from:
 * [command line](cli.md)
 * [Visual Studio](msvc.md)
 * [build pipeline](pipeline.md)
 
-While generating build system files, it is possible not to specify builder but
-let cmake choose on it's own depending on build host and/or installed toolchain.
+While generating build system files, it is possible to let cmake choose its own depending on build host and/or installed toolchain.
 In [command line](cli.md) walkthrough we show both approaches.
 
-> *Note*
-> Because buildsystem files are generated, there is no point changing them,
-> cmake will overwrite modifications. To update list of sources, build flags
-> and so on, edit CMakeLists.txt instead and cmake automatically regenerates
-> buildsystem files.
+> *Note:* <br>
+> There is no point to change generated buildsystem files because cmake will overwrite the modifications. 
+> We only have to edit the CMakeLists.txt file and CMAKE will automatically regenerate the buildsystem files to update the list of sources, build flags, and so on.
 
 
 ## Sample project
 
-This "hello, world" project builds usual C++ "hello, world" application in
-overly complex way to demonstrate splitting code into modules:
+This project builds the C++ "hello, world" program in an overly complex way to demonstrate splitting code into modules:
 * alib: independent library providing generic function `alib::print(message)`.
   It uses only C++ language features and STL (iostream, string)
 * blib: intermediate library providing welcoming function `blib::hello(who)`.
   It uses alib's printing functionality.
-* hello: application itself, depends directly on alib and blib (while blib
-  itself depends on alib)
+* hello: application depending directly on alib and blib (while blib depends on alib)
 
 
 ## Versions
 
-There are multiple versions of exactly same application, just CMake project
+There are multiple versions of exactly the same application, just CMake project
 description is organised differently. Whichever to choose, is personal
-preference. In walk-through guides, we use v1.
+preference. In this walk-through, we use v1.
 
 
 ### v1
 
-Usual C/C++ code organisation with separate `include` and `src` directories
+Usual C/C++ code organisation with separate directories: `include` and `src`
 
     ~/src/hello_cmake/v1 $ tree
     .
@@ -96,8 +91,8 @@ and it's implementation source file).
 ### v3
 
 Same approach as v2, except submodules are used with `include()` instead of
-`add_subdirectory()`. From project hierarchy perspective, this is little
-different from v2 but in build directory all targets will be in root
+`add_subdirectory()`. From the project hierarchy perspective, this is little
+different from v2 but in build directory, all targets will be in root
 directory (within build type directory). Depending on situation, this may be
 more convenient (for example, if wrapper script needs to copy files somewhere,
 etc)
@@ -121,9 +116,9 @@ etc)
 ### v4
 
 Possible approach for repositories containing multiple major independent
-targets and their shared dependencies. Here, 'hello' is major target, 'alib' +
+targets and their shared dependencies. Here, 'hello' is a major target, 'alib' +
 'blib' are its dependencies. This approach does not litter root directory with
-unrelated stuff but same time building each major targets will build separate
+unrelated stuff but at same time building each major target will construct separate
 copy of its dependencies.
 
     ~/src/hello_cmake/v4 $ tree
